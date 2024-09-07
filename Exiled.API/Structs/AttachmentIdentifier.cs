@@ -140,7 +140,6 @@ namespace Exiled.API.Structs
         /// <returns><see langword="true"/> if <see cref="string"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryParse(string s, out AttachmentIdentifier identifier)
         {
-            identifier = default;
             foreach (AttachmentIdentifier attId in Features.Items.Firearm.AvailableAttachments.Values.SelectMany(kvp => kvp.Where(kvp2 => kvp2.Name.ToString() == s)))
             {
                 identifier = attId;
