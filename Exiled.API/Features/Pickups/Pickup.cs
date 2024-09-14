@@ -13,6 +13,7 @@ namespace Exiled.API.Features.Pickups
     using Exiled.API.Extensions;
     using Exiled.API.Features.Core;
     using Exiled.API.Features.Core.Attributes;
+    using Exiled.API.Features.Core.Interfaces;
     using Exiled.API.Features.Pickups.Projectiles;
     using Exiled.API.Interfaces;
     using InventorySystem;
@@ -40,7 +41,7 @@ namespace Exiled.API.Features.Pickups
     /// A wrapper class for <see cref="ItemPickupBase"/>.
     /// </summary>
     [EClass(category: nameof(Pickup))]
-    public class Pickup : GameEntity, IWrapper<ItemPickupBase>
+    public class Pickup : GameEntity, IWrapper<ItemPickupBase>, IGameObjectGet<Pickup>
     {
         /// <summary>
         /// A dictionary of all <see cref="ItemBase"/>'s that have been converted into <see cref="Items.Item"/>.

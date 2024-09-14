@@ -11,6 +11,7 @@ namespace Exiled.API.Features.Core.Generic
     using System.Reflection;
 
     using Exiled.API.Features.Core;
+    using Exiled.API.Features.Core.Interfaces;
     using UnityEngine;
 
     /// <summary>
@@ -23,7 +24,7 @@ namespace Exiled.API.Features.Core.Generic
     /// to extend and customize their functionality. It provides a modular and extensible architecture for enhancing gameplay elements.
     /// </remarks>
     public abstract class EBehaviour<T> : EActor
-        where T : GameEntity
+        where T : GameEntity, IGameObjectGet<T>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EBehaviour{T}"/> class.
@@ -60,18 +61,14 @@ namespace Exiled.API.Features.Core.Generic
         /// </remarks>
         protected virtual void FindOwner()
         {
-            // @Nao T is a GameEntity, why not add in inisde of it the method a abstract.
-            // Or create an specific Interaface requesting to implement this method
-            MethodInfo method = typeof(T).GetMethod("Get", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(GameObject) }, null);
+            T instance = T.Get(Base);
 
-            if (method != null)
+            if (instance == null)
             {
-                Owner = (T)method.Invoke(null, new object[] { Base });
+                throw new NullReferenceException($"Methods 'Get(GameObject)' of {typeof(T).Name} return null");
             }
-            else
-            {
-                throw new MissingMethodException($"Method 'Get(GameObject)' not found in class '{typeof(T).Name}'.");
-            }
+
+            Owner = instance;
         }
 
         /// <inheritdoc/>

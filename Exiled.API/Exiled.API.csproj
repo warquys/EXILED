@@ -8,6 +8,10 @@
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <LangVersion>11.0</LangVersion>
+    </PropertyGroup>
+
     <Import Project="../EXILED.props" />
 
     <ItemGroup>

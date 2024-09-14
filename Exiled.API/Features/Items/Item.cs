@@ -12,6 +12,7 @@ namespace Exiled.API.Features.Items
 
     using Exiled.API.Features.Core;
     using Exiled.API.Features.Core.Attributes;
+    using Exiled.API.Features.Core.Interfaces;
     using Exiled.API.Features.Pickups;
     using Exiled.API.Interfaces;
     using InventorySystem;
@@ -37,7 +38,7 @@ namespace Exiled.API.Features.Items
     /// A wrapper class for <see cref="ItemBase"/>.
     /// </summary>
     [EClass(category: nameof(Item))]
-    public class Item : GameEntity, IWrapper<ItemBase>
+    public class Item : GameEntity, IWrapper<ItemBase>, IGameObjectGet<Item>
     {
         /// <summary>
         /// A dictionary of all <see cref="ItemBase"/>'s that have been converted into <see cref="Item"/>.

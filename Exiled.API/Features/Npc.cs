@@ -17,6 +17,7 @@ namespace Exiled.API.Features
     using CommandSystem;
     using Exiled.API.Enums;
     using Exiled.API.Features.Components;
+    using Exiled.API.Features.Core.Interfaces;
     using Exiled.API.Features.Items;
     using Exiled.API.Features.Roles;
     using Footprinting;
@@ -35,7 +36,7 @@ namespace Exiled.API.Features
     /// <summary>
     /// Wrapper class for handling NPC players.
     /// </summary>
-    public class Npc : Player
+    public class Npc : Player, IGameObjectGet<Npc>
     {
         /// <inheritdoc cref="Player" />
         public Npc(ReferenceHub referenceHub)

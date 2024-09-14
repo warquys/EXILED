@@ -22,6 +22,7 @@ namespace Exiled.API.Features
     using Exiled.API.Features.Attributes;
     using Exiled.API.Features.Core.Attributes;
     using Exiled.API.Features.Core.Generic.Pools;
+    using Exiled.API.Features.Core.Interfaces;
     using Exiled.API.Features.CustomStats;
     using Exiled.API.Features.Doors;
     using Exiled.API.Features.Hazards;
@@ -83,7 +84,7 @@ namespace Exiled.API.Features
     /// </summary>
     [EClass(category: nameof(Player))]
     [DefaultPlayerClass]
-    public class Player : GameEntity
+    public class Player : GameEntity, IGameObjectGet<Player>
     {
 #pragma warning disable SA1310
         /// <summary>

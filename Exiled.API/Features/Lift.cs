@@ -16,6 +16,7 @@ namespace Exiled.API.Features
     using Exiled.API.Features.Core;
     using Exiled.API.Features.Core.Attributes;
     using Exiled.API.Features.Core.Generic.Pools;
+    using Exiled.API.Features.Core.Interfaces;
     using Exiled.API.Features.Doors;
     using Exiled.API.Interfaces;
     using Interactables.Interobjects;
@@ -31,7 +32,7 @@ namespace Exiled.API.Features
     /// The in-game lift.
     /// </summary>
     [EClass(assetRegistrySearchable: false, category: nameof(Lift))]
-    public class Lift : GameEntity, IWrapper<ElevatorChamber>, IWorldSpace
+    public class Lift : GameEntity, IWrapper<ElevatorChamber>, IWorldSpace, IGameObjectGet<Lift>
     {
         /// <summary>
         /// A <see cref="Dictionary{TKey,TValue}"/> containing all known <see cref="ElevatorChamber"/>s and their corresponding <see cref="Lift"/>.
